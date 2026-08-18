@@ -1,0 +1,18 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
+    restart: unless-stopped
+    user: "$HA_USER"
+    ports:
+      - "${TAILNET_IP}:8123:8123"
+    environment:
+      TZ: ${TZ:-America/Los_Angeles}
+    volumes:
+      - $HA_CONFIG:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    cap_add:
+      - NET_ADMIN
+      - NET_BIND_SERVICE
+      - NET_RAW
