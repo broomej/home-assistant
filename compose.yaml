@@ -3,7 +3,8 @@ services:
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: homeassistant
     restart: unless-stopped
-    user: "$HA_USER"
+    group_add:
+      - uucp
     ports:
       - "${TAILNET_IP}:8123:8123"
     environment:
