@@ -16,3 +16,5 @@ services:
       - NET_ADMIN
       - NET_BIND_SERVICE
       - NET_RAW
+    devices:
+      - /dev/serial/by-id/usb-Nabu_Casa_ZBT-2_E072A1FA2F94-if00:/dev/ttyACM0
